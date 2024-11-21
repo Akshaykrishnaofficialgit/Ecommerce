@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h2 class="text-center" style="margin-top:8%; margin-bottom:3%; color:#81C408">Checkout Page</h2>
+<div class="container w-50 mx-auto bg-light p-5">
+    <h4 class="text-center" style="margin-top:8%; margin-bottom:3%; color:#81C408">Billing Details</h4>
+    <form method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label class="form-label" >Address</label>
+        <textarea class="form-control" name="ad" rows="3"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" >Phone Number</label>
+        <input type="text" class="form-control" name="ph" >
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label" >Pin Number</label>
+        <input type="text" class="form-control" name="pin">
+    </div>
+
+    <div class="text-center">
+        <button type="submit" class="btn button1">Proceed</button>
+    </div>
+</form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<div class="container">
+    <h2 class="text-center" style="margin-top:8%; margin-bottom:3%; color:#81C408">Sign Up</h2>
+    <form class="row g-3" method="POST">
+        {% csrf_token %}
+          <div class="col-md-6">
+            <label class="form-label">User Name</label>
+            <input type="text" class="form-control" name="un">
+          </div>
+       <div class="col-md-6">
+            <label class="form-label">First Name</label>
+            <input type="text" class="form-control" name="fn">
+          </div>
+       <div class="col-md-6">
+            <label class="form-label">Last Name</label>
+            <input type="text" class="form-control" name="ln">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" name="em">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Password</label>
+            <input type="password" class="form-control" name="pw">
+          </div>
+          <div class="col-md-6">
+            <label  class="form-label">Confirm Password</label>
+            <input type="password" class="form-control" name="cp">
+          </div>
+          <div class="col-12">
+            <button type="submit" class="btn button1">Register</button>
+          </div>
+    </form>
+
+
+
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h2 class="text-center" style="margin-top:8%; margin-bottom:3%; color:#81C408">{{user.username}}'s Orders</h2>
+<div class="container">
+    <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-3">
+        {% for i in orders %}
+        <div class="col">
+            <div class="card h-100">
+                <div class="row g-0">
+                    <!-- Image Section -->
+                    <div class="col-6 my-auto">
+                        <img src="{{i.product.image.url}}" class="card-img img-fluid rounded-start object-fit-cover" style="max-height: 150px;" alt="{{i.product.name}}">
+                    </div>
+                    <!-- Text Section -->
+                    <div class="col-6">
+                        <div class="card-body">
+                            <h5 class="card-title text-truncate" style="max-width: 150px;" title="{{i.product.name}}">{{i.product.name}}</h5>
+                            <p class="card-text"><b>Rs.{{i.product.price}}</b></p>
+                            <p class="card-text"><small class="text-muted"><b>Items:</b>b> {{i.no_of_items}}</small></p>
+                            <p class="card-text"><small class="text-muted"><b>Order ID:</b> {{i.order_id}}</small></p>
+                            <p class="card-text"><small class="text-muted"><b>Ordered On:</b> {{i.created}}</small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+
+{% endblock %}
+
+

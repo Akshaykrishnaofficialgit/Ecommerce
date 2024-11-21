@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h2 class="text-center" style="margin-top:8%; margin-bottom:3%; color:#81C408">Search Results:</h2>
+ {% if user.is_authenticated %}
+     {% if pro %}
+            <div class="row py-3">
+            <!-- Card 1 -->
+            {% for product in pro %}
+            <div class="col-12 col-sm-6 col-md-3 mb-4">
+                <div class="card" style="height: 100%; border: 1px solid #ddd; border-radius: 8px;">
+                    <!-- Resize Image -->
+                    <img src="{{ product.image.url }}" class="card-img-top rounded" style="height: 150px; width: 100%; object-fit: contain;">
+                    <div class="card-body p-2 max-auto text-center">
+                        <h6 class="card-title" style="font-size: 1rem;">{{product.name}}</h6>
+                        <p class="card-text" style="font-size: 0.875rem; color: #777;">{{product.available}}</p>
+                        <h6 class="text-muted" style="font-size: 1rem;">Rs.{{product.price}}</h6>
+                        <!-- Add to Cart Button -->
+                        <a class="btn btn-sm button1" href="{% url 'shop:productdetail' product.id %}">Details</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <h2 class="text-center text-danger">No results found</h2>
+        {% endif %}
+{% else %}
+     {% if pro %}
+            <div class="row py-3">
+            <!-- Card 1 -->
+            {% for product in pro %}
+            <div class="col-12 col-sm-6 col-md-3 mb-4">
+                <div class="card" style="height: 100%; border: 1px solid #ddd; border-radius: 8px;">
+                    <!-- Resize Image -->
+                    <img src="{{ product.image.url }}" class="card-img-top rounded" style="height: 150px; width: 100%; object-fit: contain;">
+                    <div class="card-body p-2 max-auto text-center">
+                        <h6 class="card-title" style="font-size: 1rem;">{{product.name}}</h6>
+                        <p class="card-text" style="font-size: 0.875rem; color: #777;">{{product.available}}</p>
+                        <h6 class="text-muted" style="font-size: 1rem;">Rs.{{product.price}}</h6>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+            <h2 class="text-center text-danger">No results found</h2>
+        {% endif %}
+{% endif %}
+{% endblock %}
