@@ -71,7 +71,7 @@ def checkout(request):
         for i in c:
             total+=i.product.price*i.quantity+(40)
 
-        client=razorpay.Client(auth=('rzp_test_7h86MOeypCPlWB','FeC0GNqvr56J4DCQ6g3AYSGP'))
+        client=razorpay.Client(auth=())
         response_payment=client.order.create(dict(amount=total*100,currency='INR'))
         amount=response_payment['amount']
         order_id=response_payment['id']
@@ -98,7 +98,7 @@ def payment_status(request,p):
         'razorpay_payment_id': response['razorpay_payment_id'],
         'razorpay_signature': response['razorpay_signature'],
     }
-    client=razorpay.Client(auth=('rzp_test_7h86MOeypCPlWB','FeC0GNqvr56J4DCQ6g3AYSGP'))
+    client=razorpay.Client(auth=())
     try:
         status=client.utility.verify_payment_signature(param_dict)
         print(status)
